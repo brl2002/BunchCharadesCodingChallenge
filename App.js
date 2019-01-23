@@ -11,6 +11,10 @@ import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimension
 
 import CrappyLayout from './src/layouts/CrappyLayout'
 
+// Task 1: Complete Houseparty Layout
+
+// import HousepartyLayout from './src/layouts/HousepartyLayout'
+
 export default class App extends Component {
   render() {
     console.disableYellowBox = true
