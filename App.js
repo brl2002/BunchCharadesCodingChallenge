@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, StatusBar} from 'react-native';
+import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
 
 import CrappyLayout from './src/layouts/CrappyLayout'
 
@@ -18,6 +18,10 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <CrappyLayout />
+
+        <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7}>
+          <Text style={styles.textStyle}>Start Game</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -26,5 +30,25 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
+  bottomWrapperStyle: {
+    width: 150,
+    justifyContent: 'center',
+    textAlign: 'center',
+    height: 40,
+    position: 'absolute',
+    bottom: 5,
+    backgroundColor: 'black',
+    borderRadius: 30,
+    opacity: 0.8
+  },
+  textStyle: {
+    fontSize: 15,
+    color: 'white',
+    fontFamily: 'AvenirNext-Regular',
+    fontWeight: '700',
+    textAlign: 'center',
+  }
 });
