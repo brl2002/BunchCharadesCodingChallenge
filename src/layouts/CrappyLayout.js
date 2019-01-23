@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 import { Text, View, Dimensions, Image, StyleSheet } from 'react-native'
 
@@ -8,8 +9,8 @@ const { height, width } = Dimensions.get('window')
 export default class CrappyLayout extends Component {
 
   renderMember = (member) => {
-    const memberHeight = height / members.length
     const {avatar, color, name} = member
+
 
     return (
       <View key={color} style={[styles.memberContainer, {backgroundColor: color}]}> 
@@ -19,7 +20,10 @@ export default class CrappyLayout extends Component {
   }
 
   renderMembers = () => {
-    return members.map((member) => this.renderMember(member))
+    return Array.from({ length: this.props.numMembers }).map((x, i) => {
+      const member = members[i]
+      return this.renderMember(member)
+    })
   }
 
   render() {
@@ -42,4 +46,5 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
+
 
