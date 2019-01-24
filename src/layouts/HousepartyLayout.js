@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 
 export default class HousepartyLayout extends Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        
+      <View style={styles.container}>
       </View>
     )
   }
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+});
+
