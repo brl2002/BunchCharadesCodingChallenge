@@ -9,8 +9,9 @@ Welcome! Were excited you are interested in working for [Bunch](https://itunes.a
 4. Push your changes to your repo and send the repo to **hiring@bunch.live** and we will review and get back to you!
 
 ## Rules
-1. Don't spend too long on it. **2 hours** or less.
-2. Have fun with it. 
+1. Don't spend too long on it. **2 hours** or less but you can spread it out over time.
+2. Commit often, preferably with emojis.
+3. Have fun with it. 
 
 
 ## Challenges
