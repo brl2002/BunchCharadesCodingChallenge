@@ -56,7 +56,7 @@ Lets implement a simple game! We are going to clone the famous `Heads Up` game b
 
 In the end you should end up with something similar to this:
 
- <img src="https://media.giphy.com/media/LXfxs0x7QkolZT01VJ/giphy.gif" alt="drawing" width="300"/>
+ <img src="./src/assets/Charades.gif" alt="drawing" width="300"/>
 
 ### c) Something else?
 
