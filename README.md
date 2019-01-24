@@ -15,7 +15,7 @@ Welcome! We are excited you are interested in working for [Bunch](https://itunes
 
 
 ## Challenges
-Feel free to choose **one**, both, or none of these and do your own thing. If you can complete them all in 2 hours - great - but no pressure. Pick the ones that show off what you are great at and do those!
+Feel free to choose **one**, both, or none of these and do your own thing. If you can complete them all - great - but no pressure. Pick the ones that show off what you are great at and do those!
 
 ### a) Houseparty Layout
 
