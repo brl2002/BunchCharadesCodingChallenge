@@ -52,6 +52,7 @@ Lets implement a simple game! We are going to clone the famous `Heads Up` game b
 
 * Animation when you get a word correct/pass that animates the answer over the gif and darkens the background image
 * Animation transitioning to the next gif (bonus points if custom)
+* Fancier UI elements
 
 
 In the end you should end up with something similar to this:
