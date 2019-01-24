@@ -1,21 +1,21 @@
 # Bunch Coding Challenge
 
-Welcome! Were excited you are interested in working for [Bunch](https://itunes.apple.com/us/app/bunch-group-video-chat-games/id1294869021?mt=8).
+Welcome! We are excited you are interested in working for [Bunch](https://itunes.apple.com/us/app/bunch-group-video-chat-games/id1294869021?mt=8).
 
 ## Steps
 1. Fork this repo
-2. Clone your repo
+2. Clone your forked repo
 3. Work on any of the challenges below for **2 hours** or so.
 4. Push your changes to your repo and send the repo to **hiring@bunch.live** and we will review and get back to you!
 
 ## Rules
-1. Don't spend too long on it. **2 hours** or less but you can spread it out over time.
+1. You're free to spend as much time as you want on it but don't go too crazy. See what you can do in **2 hours** or less but you can spread it out over time. 
 2. Commit often, preferably with emojis 😆
 3. Have fun with it. 
 
 
 ## Challenges
-Feel free to do any or none of these. If you can complete them all in 2 hours - great - but no pressure. Pick the ones that show off what you are great at and do those!
+Feel free to choose **one**, both, or none of these and do your own thing. If you can complete them all in 2 hours - great - but no pressure. Pick the ones that show off what you are great at and do those!
 
 ### a) Houseparty Layout
 
@@ -68,8 +68,8 @@ Some ideas:
 2. Fancier custom animations (if you can show off some serious animation chops we will love it 💙 )
 3. Ability to drag the people around and change their position / resize them
 4. Integrate with redux/rxjs/sagas etc or do a nice refactoring
-5. The new Facetime like layout
-
+5. The new Facetime layout
+6. Implement voice recognition or video filters 🤯
 
 
 # Thanks!
