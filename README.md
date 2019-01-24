@@ -10,7 +10,7 @@ Welcome! Were excited you are interested in working for [Bunch](https://itunes.a
 
 ## Rules
 1. Don't spend too long on it. **2 hours** or less but you can spread it out over time.
-2. Commit often, preferably with emojis.
+2. Commit often, preferably with emojis 😆
 3. Have fun with it. 
 
 
