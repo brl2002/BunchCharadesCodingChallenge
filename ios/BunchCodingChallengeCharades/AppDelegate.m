@@ -23,7 +23,7 @@
   #endif
   
   NSString *hostAddress;
-  hostAddress = @"192.168.86.240:8081";
+  //hostAddress = @"192.168.86.240:8081";
   if (hostAddress) {
     NSString *jsCodeUrlString = [NSString stringWithFormat:@"http://%@/index.bundle?platform=ios&dev=true", hostAddress] ;
     NSString *jsBundleUrlString = [jsCodeUrlString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
