@@ -47,6 +47,7 @@ Lets implement a simple game! We are going to clone the famous `Heads Up` game b
 * There is a 3 second countdown
 * Able to pass/correct the words to move to the next one
 * At the end of the game it can just exit the game
+* Game lasts 30 seconds with a sliding countdown
 
 **Nice to haves**
 
