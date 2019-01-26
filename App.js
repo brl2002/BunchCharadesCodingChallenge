@@ -17,6 +17,7 @@ import HousepartyLayout from './src/layouts/HousepartyLayout'
 import GifDisplay from "./src/components/GifDisplay";
 import {GameStatus, GifStatus} from "./src/consts";
 import MemberButtons from "./src/components/MemberButtons";
+import GameButtons from "./src/components/GameButtons";
 
 export default class App extends Component {
   constructor(props) {
@@ -66,6 +67,8 @@ export default class App extends Component {
         <GifDisplay gameStatus={this.state.gameStatus} currentGif={this.state.currentGif} currentGifStatus={this.state.currentGifStatus}/>
 
         <CrappyLayout numMembers={this.state.numMembers} />
+
+        <GameButtons />
 
         <MemberButtons onAddMember={this.onAddMember} onSubtractMember={this.onSubtractMember} onStartGame={this.onStartGame} />
 
