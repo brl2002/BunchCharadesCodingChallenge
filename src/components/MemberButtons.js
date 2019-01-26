@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions, LayoutAnimation} from 'react-native';
+import {GameStatus} from "../consts";
 
 export default class MemberButtons extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, this.props.gameStatus == GameStatus.Idle && styles.containerActive]}>
                 <View style={styles.bottomWrapperStyle}>
                     <TouchableOpacity style={[styles.buttonStyle, {width:150}]} activeOpacity={0.7} onPress={this.props.onStartGame}>
                         <Text style={styles.textStyle}>Start Game</Text>
@@ -31,7 +32,11 @@ export default class MemberButtons extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFill
+        ...StyleSheet.absoluteFill,
+        display: 'none'
+    },
+    containerActive: {
+        display: 'flex'
     },
     bottomWrapperStyle: {
         position: 'absolute',

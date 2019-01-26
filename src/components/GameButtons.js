@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions, LayoutAnimation} from 'react-native';
+import {GameStatus} from "../consts";
 
 export default class GameButtons extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, this.props.gameStatus != GameStatus.Idle && styles.containerActive]}>
                 <View style={[styles.button, styles.pass]}>
                     <Text style={styles.text}>Pass</Text>
                 </View>
@@ -21,8 +22,11 @@ export default class GameButtons extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: 50,
+        height: 0,
         flexDirection: 'row'
+    },
+    containerActive: {
+        height: 50
     },
     button: {
         width: '50%',

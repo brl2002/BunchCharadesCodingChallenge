@@ -68,9 +68,9 @@ export default class App extends Component {
 
         <CrappyLayout numMembers={this.state.numMembers} />
 
-        <GameButtons />
+        <GameButtons gameStatus={this.state.gameStatus} />
 
-        <MemberButtons onAddMember={this.onAddMember} onSubtractMember={this.onSubtractMember} onStartGame={this.onStartGame} />
+        <MemberButtons gameStatus={this.state.gameStatus} onAddMember={this.onAddMember} onSubtractMember={this.onSubtractMember} onStartGame={this.onStartGame} />
 
       </View>
 
