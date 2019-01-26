@@ -23,6 +23,13 @@ class SingleGif extends Component {
 
 export default class GifDisplay extends Component {
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.currentGifStatus != this.props.currentGifStatus) {
+            // skip the result display for now
+            this.props.onGifResultComplete();
+        }
+    }
+
     renderGifs() {
         return gifs.map((gif, i) => (
             <SingleGif gif={gif} active={this.props.currentGif == i}/>

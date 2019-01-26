@@ -18,6 +18,7 @@ import GifDisplay from "./src/components/GifDisplay";
 import {GameStatus, GifStatus} from "./src/consts";
 import MemberButtons from "./src/components/MemberButtons";
 import GameButtons from "./src/components/GameButtons";
+import gifs from "./src/gifs";
 
 export default class App extends Component {
   constructor(props) {
@@ -30,7 +31,6 @@ export default class App extends Component {
       currentGifStatus: GifStatus.Waiting
     }
   }
-
 
   onAddMember = () => {
     this.setState(currentState => {
@@ -59,16 +59,41 @@ export default class App extends Component {
     });
   }
 
+  onSelectPass = () => {
+    this.setState({
+        currentGifStatus: GifStatus.Pass
+    });
+  }
+
+  onSelectCorrect = () => {
+    this.setState({
+        currentGifStatus: GifStatus.Correct
+    });
+  }
+
+  onGifResultComplete = () => {
+    if (this.state.currentGif < gifs.length) {
+      this.setState({
+          currentGif: this.state.currentGif + 1,
+          currentGifStatus: GifStatus.Waiting
+      });
+    } else {
+        this.setState({
+            gameStatus: GameStatus.Idle
+        });
+    }
+  }
+
   render() {
     console.disableYellowBox = true
     StatusBar.setHidden(true)
     return (
       <View style={styles.container}>
-        <GifDisplay gameStatus={this.state.gameStatus} currentGif={this.state.currentGif} currentGifStatus={this.state.currentGifStatus}/>
+        <GifDisplay gameStatus={this.state.gameStatus} currentGif={this.state.currentGif} currentGifStatus={this.state.currentGifStatus} onGifResultComplete={this.onGifResultComplete}/>
 
         <CrappyLayout numMembers={this.state.numMembers} />
 
-        <GameButtons gameStatus={this.state.gameStatus} />
+        <GameButtons gameStatus={this.state.gameStatus} onSelectPass={this.onSelectPass} onSelectCorrect={this.onSelectCorrect} />
 
         <MemberButtons gameStatus={this.state.gameStatus} onAddMember={this.onAddMember} onSubtractMember={this.onSubtractMember} onStartGame={this.onStartGame} />
 
