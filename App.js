@@ -7,20 +7,24 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions, LayoutAnimation} from 'react-native';
 
 import CrappyLayout from './src/layouts/CrappyLayout'
 
 // Task 1: Complete Houseparty Layout
 
 import HousepartyLayout from './src/layouts/HousepartyLayout'
+import {GameStatus, GifStatus} from "./src/consts";
 
 export default class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      numMembers: 2
+      numMembers: 2,
+      gameStatus: GameStatus.Idle,
+      currentGif: 0,
+      currentGifStatus: GifStatus.Waiting
     }
   }
 
@@ -43,6 +47,15 @@ export default class App extends Component {
     })
   }
 
+  onStartGame = () => {
+    LayoutAnimation.spring();
+    this.setState({
+        gameStatus: GameStatus.Running,
+        currentGif: 0,
+        currentGifStatus: GifStatus.Waiting
+    });
+  }
+
   render() {
     console.disableYellowBox = true
     StatusBar.setHidden(true)
@@ -50,7 +63,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <CrappyLayout numMembers={this.state.numMembers} />
 
-        <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7} onPress={this.onStartGame}>
           <Text style={styles.textStyle}>Start Game</Text>
         </TouchableOpacity>
 
