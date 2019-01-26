@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions, LayoutAnimation} from 'react-native';
+import {Platform, StyleSheet, Text, View, StatusBar, TouchableHighlight, Dimensions, LayoutAnimation} from 'react-native';
 import {GameStatus} from "../consts";
 
 export default class GameButtons extends Component {
@@ -7,12 +7,12 @@ export default class GameButtons extends Component {
     render() {
         return (
             <View style={[styles.container, this.props.gameStatus != GameStatus.Idle && styles.containerActive]}>
-                <View style={[styles.button, styles.pass]}>
+                <TouchableHighlight style={[styles.button, styles.pass]} onPress={this.props.onSelectPass}>
                     <Text style={styles.text}>Pass</Text>
-                </View>
-                <View style={[styles.button, styles.correct]}>
+                </TouchableHighlight>
+                <TouchableHighlight style={[styles.button, styles.correct]} onPress={this.props.onSelectCorrect}>
                     <Text style={styles.text}>Correct</Text>
-                </View>
+                </TouchableHighlight>
             </View>
         );
     }
