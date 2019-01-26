@@ -14,6 +14,7 @@ import CrappyLayout from './src/layouts/CrappyLayout'
 // Task 1: Complete Houseparty Layout
 
 import HousepartyLayout from './src/layouts/HousepartyLayout'
+import GifDisplay from "./src/components/GifDisplay";
 import {GameStatus, GifStatus} from "./src/consts";
 
 export default class App extends Component {
@@ -61,6 +62,8 @@ export default class App extends Component {
     StatusBar.setHidden(true)
     return (
       <View style={styles.container}>
+        <GifDisplay gameStatus={this.state.gameStatus} currentGif={this.state.currentGif} currentGifStatus={this.state.currentGifStatus}/>
+
         <CrappyLayout numMembers={this.state.numMembers} />
 
         <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7} onPress={this.onStartGame}>
