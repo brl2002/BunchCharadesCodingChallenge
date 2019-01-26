@@ -16,6 +16,7 @@ import CrappyLayout from './src/layouts/CrappyLayout'
 import HousepartyLayout from './src/layouts/HousepartyLayout'
 import GifDisplay from "./src/components/GifDisplay";
 import {GameStatus, GifStatus} from "./src/consts";
+import MemberButtons from "./src/components/MemberButtons";
 
 export default class App extends Component {
   constructor(props) {
@@ -66,21 +67,11 @@ export default class App extends Component {
 
         <CrappyLayout numMembers={this.state.numMembers} />
 
-        <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7} onPress={this.onStartGame}>
-          <Text style={styles.textStyle}>Start Game</Text>
-        </TouchableOpacity>
+        <MemberButtons onAddMember={this.onAddMember} onSubtractMember={this.onSubtractMember} onStartGame={this.onStartGame} />
 
-        <View style={styles.buttonWrapperStyle}>
-
-          <TouchableOpacity style={styles.addMemberWrapper} activeOpacity={0.7} onPress={this.onSubtractMember}>
-            <Text style={styles.textStyle}>-</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.subtractMemberWrapper} activeOpacity={0.7} onPress={this.onAddMember}>
-            <Text style={styles.textStyle}>+</Text>
-          </TouchableOpacity>
-        </View>
       </View>
+
+
     );
   }
 }
@@ -91,49 +82,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  bottomWrapperStyle: {
-    width: 150,
-    justifyContent: 'center',
-    textAlign: 'center',
-    height: 40,
-    position: 'absolute',
-    bottom: 5,
-    backgroundColor: 'black',
-    borderRadius: 30,
-    opacity: 0.8
-  },
-  textStyle: {
-    fontSize: 18,
-    color: 'white',
-    fontFamily: 'AvenirNext-Regular',
-    fontWeight: '900',
-    textAlign: 'center',
-  },
-
-  addMemberWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    textAlign: 'center',
-    backgroundColor: 'black',
-    borderRadius: 30,
-    opacity: 0.8
-  },
-
-
-  subtractMemberWrapper: {
-    justifyContent: 'center',
-    textAlign: 'center',
-    backgroundColor: 'black',
-    borderRadius: 30,
-    opacity: 0.8,
-    flex: 1
-  },
-  buttonWrapperStyle: {
-    position: 'absolute',
-    bottom: 5,
-    right: 5,
-    height: 40,
-    width: 80,
-    flexDirection: 'row'
-  }
 });
