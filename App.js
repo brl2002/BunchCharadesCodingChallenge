@@ -19,6 +19,7 @@ import {GameStatus, GifStatus} from "./src/consts";
 import MemberButtons from "./src/components/MemberButtons";
 import GameButtons from "./src/components/GameButtons";
 import gifs from "./src/gifs";
+import CountdownBar from "./src/components/CountdownBar";
 
 export default class App extends Component {
   constructor(props) {
@@ -78,10 +79,18 @@ export default class App extends Component {
           currentGifStatus: GifStatus.Waiting
       });
     } else {
+        LayoutAnimation.spring();
         this.setState({
             gameStatus: GameStatus.Idle
         });
     }
+  }
+
+  onCountdownComplete = () => {
+      LayoutAnimation.spring();
+      this.setState({
+          gameStatus: GameStatus.Idle
+      });
   }
 
   render() {
@@ -90,6 +99,8 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <GifDisplay gameStatus={this.state.gameStatus} currentGif={this.state.currentGif} currentGifStatus={this.state.currentGifStatus} onGifResultComplete={this.onGifResultComplete}/>
+
+        <CountdownBar gameStatus={this.state.gameStatus} onCountdownComplete={this.onCountdownComplete} />
 
         <CrappyLayout numMembers={this.state.numMembers} />
 

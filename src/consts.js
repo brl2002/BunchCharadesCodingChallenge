@@ -1,3 +1,5 @@
+export const GameLength = 10000;
+
 export const GameStatus = {
     Idle: 'idle',
     Countdown: 'countdown',
