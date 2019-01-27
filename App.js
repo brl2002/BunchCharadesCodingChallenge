@@ -27,10 +27,11 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      numMembers: 2,
-      gameStatus: GameStatus.Idle,
-      currentGif: 0,
-      currentGifStatus: GifStatus.Waiting
+        numMembers: 2,
+        gameStatus: GameStatus.Idle,
+        currentGif: 0,
+        currentGifStatus: GifStatus.Waiting,
+        correctStreak: 0,
     }
 
     this.music = new MusicPlayer();
@@ -59,20 +60,28 @@ export default class App extends Component {
     this.setState({
         gameStatus: GameStatus.Running,
         currentGif: 0,
-        currentGifStatus: GifStatus.Waiting
+        currentGifStatus: GifStatus.Waiting,
+        correctStreak: 0
     });
+    this.music.setMusic(true, 0);
   }
 
   onSelectPass = () => {
     this.setState({
-        currentGifStatus: GifStatus.Pass
+        currentGifStatus: GifStatus.Pass,
+        correctStreak: 0
     });
+    this.music.setMusic(true, 0);
   }
 
   onSelectCorrect = () => {
+    const correctStreak = this.state.correctStreak + 1;
     this.setState({
-        currentGifStatus: GifStatus.Correct
+        currentGifStatus: GifStatus.Correct,
+        correctStreak: correctStreak
     });
+    console.log(correctStreak);
+      this.music.setMusic(true, correctStreak);
   }
 
   onGifResultComplete = () => {

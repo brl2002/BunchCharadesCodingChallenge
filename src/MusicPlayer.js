@@ -31,6 +31,13 @@ export default class MusicPlayer {
         }
     }
 
+    setMusic(toggle, level) {
+        level = Math.min(level, this.sounds.length-1);
+        this.sounds.forEach((sound, i) => {
+            sound.setVolume(toggle && i == level ? 1 : 0);
+        });
+    }
+
 }
 
 
