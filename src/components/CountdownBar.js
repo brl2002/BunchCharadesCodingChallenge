@@ -10,7 +10,6 @@ export default class CountdownBar extends Component {
     componentDidUpdate(prevProps) {
         if (prevProps.gameStatus != GameStatus.Running && this.props.gameStatus == GameStatus.Running) {
             this.state.percentRemaining.setValue(100);
-            console.log(this.state.percentRemaining, 'starting');
             Animated.timing(
                 this.state.percentRemaining, {
                     toValue: 0,
