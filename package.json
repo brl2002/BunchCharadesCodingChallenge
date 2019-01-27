@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "react-native-particles": "^0.0.7",
     "react-native-sound": "^0.10.9"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, Dimensions, Image, StyleSheet, Animated, Easing } from 'react-native'
+import { Emitter } from 'react-native-particles';
 
 import gifs from '../gifs';
 import {GameStatus, GifStatus} from "../consts";
@@ -12,6 +13,7 @@ class SingleGif extends Component {
         translate: new Animated.Value(0),
         opacity: new Animated.Value(1),
         resultOpacity: new Animated.Value(0),
+        particles: false
     }
 
     componentDidUpdate(prevProps) {
@@ -26,14 +28,14 @@ class SingleGif extends Component {
                     duration: 300
                 }),
                 Animated.timing(this.state.scale, {
-                    toValue: this.props.status == GifStatus.Correct ? 1.3 : 0.7,
-                    duration: 800,
-                    easing: Easing.in(Easing.cubic),
+                    toValue: this.props.status == GifStatus.Correct ? 1.5 : 0.7,
+                    duration: 1000,
+                    easing: Easing.out(Easing.cubic),
                 }),
                 Animated.timing(this.state.translate, {
                     toValue: this.props.status == GifStatus.Correct ? -height/3 : height/3,
                     duration: 500,
-                    delay: 500,
+                    delay: 700,
                 }),
                 Animated.timing(this.state.opacity, {
                     toValue: 0,
@@ -42,15 +44,34 @@ class SingleGif extends Component {
                 }),
             ]).start(this.props.onGifResultComplete)
 
+            if (this.props.status == GifStatus.Correct) {
+                this.setState({particles: true});
+            }
         }
     }
 
     render() {
         const opacity = this.props.status !== false ? this.state.opacity : 0;
+
+        const particles =  this.state.particles &&
+            <Emitter style={{...StyleSheet.absoluteFill}}
+                numberOfParticles={50}
+                emissionRate={20}
+                interval={1}
+                particleLife={1000}
+                direction={-90}
+                spread={360}
+                speed={10}
+                fromPosition={{ x: width/2, y: 100 }}
+            >
+                <View style={styles.particle} />
+            </Emitter>;
+
         return (
             <Animated.View style={{...styles.singleGif, opacity: opacity, transform:[{translateY: this.state.translate}, {scale: this.state.scale}]}}>
                 <Image style={styles.image} source={{uri: this.props.gif.url}} resizeMode={'cover'}/>
                 <Animated.View style={{...styles.result, opacity: this.state.resultOpacity}}>
+                    {particles}
                     <Text style={styles.text}>{this.props.gif.word}</Text>
                 </Animated.View>
             </Animated.View>
@@ -80,6 +101,7 @@ export default class GifDisplay extends Component {
 const styles = StyleSheet.create({
     gifDisplay: {
         width,
+        backgroundColor: 'black',
         height: '0%',
     },
     gifDisplayActive: {
@@ -104,6 +126,12 @@ const styles = StyleSheet.create({
         fontFamily: 'AvenirNext-Regular',
         fontWeight: '900',
         textAlign: 'center',
+    },
+    particle: {
+        width: 10,
+        height: 10,
+        backgroundColor: 'rgba(150,200,255,0.7)',
+        borderRadius: 5
     }
 });
 

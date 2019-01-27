@@ -2965,6 +2965,10 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
 lodash.pad@^4.1.0:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/lodash.pad/-/lodash.pad-4.5.1.tgz#4330949a833a7c8da22cc20f6a26c4d59debba70"
@@ -3931,6 +3935,12 @@ react-devtools-core@^3.4.2:
 react-is@^16.6.3:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
+
+react-native-particles@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-particles/-/react-native-particles-0.0.7.tgz#c8bb6187c835335f39fa617e97b0aba3a70fec67"
+  dependencies:
+    lodash.debounce "^4.0.8"
 
 react-native-sound@^0.10.9:
   version "0.10.9"
