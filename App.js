@@ -91,18 +91,20 @@ export default class App extends Component {
           currentGifStatus: GifStatus.Waiting
       });
     } else {
-        LayoutAnimation.spring();
-        this.setState({
-            gameStatus: GameStatus.Idle
-        });
+        this.endGame();
     }
   }
 
   onCountdownComplete = () => {
+      this.endGame();
+  }
+
+  endGame() {
       LayoutAnimation.spring();
       this.setState({
           gameStatus: GameStatus.Idle
       });
+      this.music.setMusic(false);
   }
 
   render() {
