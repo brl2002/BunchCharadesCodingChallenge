@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Dimensions, Image, StyleSheet, Animated } from 'react-native'
+import { Text, View, Dimensions, Image, StyleSheet, Animated, Easing } from 'react-native'
 
 import gifs from '../gifs';
 import {GameStatus, GifStatus} from "../consts";
@@ -8,28 +8,52 @@ const { height, width } = Dimensions.get('window')
 
 class SingleGif extends Component {
     state = {
-        resultOpacity: new Animated.Value(0)
+        scale: new Animated.Value(1),
+        translate: new Animated.Value(0),
+        opacity: new Animated.Value(1),
+        resultOpacity: new Animated.Value(0),
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.status == GifStatus.Waiting && this.props.status != GifStatus.Waiting) {
             this.state.resultOpacity.setValue(0);
-            Animated.timing(this.state.resultOpacity, {
-                toValue: 1,
-                duration: 700
-            }).start(this.props.onGifResultComplete);
+            this.state.scale.setValue(1);
+            this.state.translate.setValue(0);
+            this.state.opacity.setValue(1);
+            Animated.parallel([
+                Animated.timing(this.state.resultOpacity, {
+                    toValue: 1,
+                    duration: 300
+                }),
+                Animated.timing(this.state.scale, {
+                    toValue: this.props.status == GifStatus.Correct ? 1.3 : 0.7,
+                    duration: 800,
+                    easing: Easing.in(Easing.cubic),
+                }),
+                Animated.timing(this.state.translate, {
+                    toValue: this.props.status == GifStatus.Correct ? -height/3 : height/3,
+                    duration: 500,
+                    delay: 500,
+                }),
+                Animated.timing(this.state.opacity, {
+                    toValue: 0,
+                    duration: 200,
+                    delay: 800,
+                }),
+            ]).start(this.props.onGifResultComplete)
+
         }
     }
 
     render() {
-        const opacity = this.props.status !== false ? 1 : 0;
+        const opacity = this.props.status !== false ? this.state.opacity : 0;
         return (
-            <View style={{...styles.singleGif, opacity: opacity}}>
+            <Animated.View style={{...styles.singleGif, opacity: opacity, transform:[{translateY: this.state.translate}, {scale: this.state.scale}]}}>
                 <Image style={styles.image} source={{uri: this.props.gif.url}} resizeMode={'cover'}/>
                 <Animated.View style={{...styles.result, opacity: this.state.resultOpacity}}>
                     <Text style={styles.text}>{this.props.gif.word}</Text>
                 </Animated.View>
-            </View>
+            </Animated.View>
         );
     }
 }
