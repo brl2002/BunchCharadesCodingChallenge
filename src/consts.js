@@ -1,4 +1,4 @@
-export const GameLength = 10000;
+export const GameLength = 30000;
 
 export const GameStatus = {
     Idle: 'idle',
