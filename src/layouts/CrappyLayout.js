@@ -3,26 +3,16 @@ import React, { Component } from 'react'
 import { Text, View, Dimensions, Image, StyleSheet } from 'react-native'
 
 import members from '../members'
+import MemberPortrait from "../components/MemberPortrait";
 
-const { height, width } = Dimensions.get('window')
+const { height, width } = Dimensions.get('window');
 
 export default class CrappyLayout extends Component {
-
-  renderMember = (member) => {
-    const {avatar, color, name} = member
-
-
-    return (
-      <View key={color} style={[styles.memberContainer, {backgroundColor: color}]}> 
-        <Image style={styles.imageStyle} source={avatar} resizeMode={'contain'}/>
-      </View>
-    )
-  }
 
   renderMembers = () => {
     return Array.from({ length: this.props.numMembers }).map((x, i) => {
       const member = members[i]
-      return this.renderMember(member)
+      return <MemberPortrait key={member.name} member={member}/>
     })
   }
 
@@ -36,15 +26,6 @@ export default class CrappyLayout extends Component {
 }
 
 const styles = StyleSheet.create({
-  memberContainer: {
-    width,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1
-  },
-  imageStyle: {
-    flex: 1
-  }
 });
 
 
