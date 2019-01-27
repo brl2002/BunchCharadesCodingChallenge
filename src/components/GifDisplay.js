@@ -1,20 +1,34 @@
 import React, { Component } from 'react'
-import { Text, View, Dimensions, Image, StyleSheet } from 'react-native'
+import { Text, View, Dimensions, Image, StyleSheet, Animated } from 'react-native'
 
 import gifs from '../gifs';
-import {GameStatus} from "../consts";
+import {GameStatus, GifStatus} from "../consts";
 
 const { height, width } = Dimensions.get('window')
 
 class SingleGif extends Component {
-    render() {
-        const style = {position:'absolute', left:0, top:0, width:'100%', height:'100%'};
-        if (!this.props.active) {
-            style.display = 'none';
+    state = {
+        resultOpacity: new Animated.Value(0)
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.status == GifStatus.Waiting && this.props.status != GifStatus.Waiting) {
+            this.state.resultOpacity.setValue(0);
+            Animated.timing(this.state.resultOpacity, {
+                toValue: 1,
+                duration: 700
+            }).start(this.props.onGifResultComplete);
         }
+    }
+
+    render() {
+        const opacity = this.props.status !== false ? 1 : 0;
         return (
-            <View style={style}>
-                <Image style={{width:'100%', height:'100%'}} source={{uri: this.props.gif.url}} resizeMode={'cover'}/>
+            <View style={{...styles.singleGif, opacity: opacity}}>
+                <Image style={styles.image} source={{uri: this.props.gif.url}} resizeMode={'cover'}/>
+                <Animated.View style={{...styles.result, opacity: this.state.resultOpacity}}>
+                    <Text style={styles.text}>{this.props.gif.word}</Text>
+                </Animated.View>
             </View>
         );
     }
@@ -23,17 +37,11 @@ class SingleGif extends Component {
 
 export default class GifDisplay extends Component {
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.currentGifStatus != this.props.currentGifStatus) {
-            // skip the result display for now
-            this.props.onGifResultComplete();
-        }
-    }
-
     renderGifs() {
-        return gifs.map((gif, i) => (
-            <SingleGif gif={gif} active={this.props.currentGif == i}/>
-        ));
+        return gifs.map((gif, i) => {
+            const status = this.props.currentGif == i ? this.props.currentGifStatus : false;
+            return <SingleGif key={i} gif={gif} status={status} onGifResultComplete={this.props.onGifResultComplete}/>
+        }).reverse();
     }
 
     render() {
@@ -53,6 +61,26 @@ const styles = StyleSheet.create({
     gifDisplayActive: {
         height: '25%'
     },
+    singleGif: {
+        ...StyleSheet.absoluteFill,
+    },
+    image: {
+        ...StyleSheet.absoluteFill
+    },
+    result: {
+        ...StyleSheet.absoluteFill,
+        backgroundColor: 'rgba(0,0,0,0.8)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // opacity: 0,
+    },
+    text: {
+        fontSize: 24,
+        color: 'white',
+        fontFamily: 'AvenirNext-Regular',
+        fontWeight: '900',
+        textAlign: 'center',
+    }
 });
 
 
