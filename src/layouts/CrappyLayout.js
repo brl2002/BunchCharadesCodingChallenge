@@ -12,7 +12,7 @@ export default class CrappyLayout extends Component {
   renderMembers = () => {
     return Array.from({ length: this.props.numMembers }).map((x, i) => {
       const member = members[i]
-      return <MemberPortrait key={member.name} member={member}/>
+      return <MemberPortrait key={member.name} member={member} danceLevel={this.props.danceLevel} />
     })
   }
 

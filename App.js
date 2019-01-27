@@ -102,21 +102,23 @@ export default class App extends Component {
   endGame() {
       LayoutAnimation.spring();
       this.setState({
-          gameStatus: GameStatus.Idle
+          gameStatus: GameStatus.Idle,
+          correctStreak: 0
       });
       this.music.setMusic(false);
   }
 
   render() {
     console.disableYellowBox = true
-    StatusBar.setHidden(true)
+    StatusBar.setHidden(true);
+
     return (
       <View style={styles.container}>
         <GifDisplay gameStatus={this.state.gameStatus} currentGif={this.state.currentGif} currentGifStatus={this.state.currentGifStatus} onGifResultComplete={this.onGifResultComplete}/>
 
         <CountdownBar gameStatus={this.state.gameStatus} onCountdownComplete={this.onCountdownComplete} />
 
-        <CrappyLayout numMembers={this.state.numMembers} />
+        <CrappyLayout numMembers={this.state.numMembers} danceLevel={this.state.correctStreak} />
 
         <GameButtons gameStatus={this.state.gameStatus} onSelectPass={this.onSelectPass} onSelectCorrect={this.onSelectCorrect} />
 
