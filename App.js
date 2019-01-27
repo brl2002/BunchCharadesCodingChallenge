@@ -20,6 +20,7 @@ import MemberButtons from "./src/components/MemberButtons";
 import GameButtons from "./src/components/GameButtons";
 import gifs from "./src/gifs";
 import CountdownBar from "./src/components/CountdownBar";
+import MusicPlayer from "./src/MusicPlayer";
 
 export default class App extends Component {
   constructor(props) {
@@ -31,6 +32,8 @@ export default class App extends Component {
       currentGif: 0,
       currentGifStatus: GifStatus.Waiting
     }
+
+    this.music = new MusicPlayer();
   }
 
   onAddMember = () => {
