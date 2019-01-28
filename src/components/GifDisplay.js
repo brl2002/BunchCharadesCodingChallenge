@@ -25,22 +25,20 @@ class SingleGif extends Component {
             Animated.parallel([
                 Animated.timing(this.state.resultOpacity, {
                     toValue: 1,
-                    duration: 300
+                    duration: 300,
+                    useNativeDriver: true,
                 }),
                 Animated.timing(this.state.scale, {
                     toValue: this.props.status == GifStatus.Correct ? 1.5 : 0.7,
                     duration: 1000,
                     easing: Easing.out(Easing.cubic),
+                    useNativeDriver: true,
                 }),
                 Animated.timing(this.state.translate, {
                     toValue: this.props.status == GifStatus.Correct ? -height/3 : height/3,
                     duration: 500,
                     delay: 700,
-                }),
-                Animated.timing(this.state.opacity, {
-                    toValue: 0,
-                    duration: 200,
-                    delay: 800,
+                    useNativeDriver: true,
                 }),
             ]).start(this.props.onGifResultComplete)
 
