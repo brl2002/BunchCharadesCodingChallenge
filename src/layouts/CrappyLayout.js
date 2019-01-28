@@ -12,13 +12,13 @@ export default class CrappyLayout extends Component {
   renderMembers = () => {
     return Array.from({ length: this.props.numMembers }).map((x, i) => {
       const member = members[i]
-      return <MemberPortrait key={member.name} member={member} danceLevel={this.props.danceLevel} />
+      return <MemberPortrait key={member.name} width={'100%'} member={member} danceLevel={this.props.danceLevel} />
     })
   }
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         {this.renderMembers()}
       </View>
     )
@@ -26,6 +26,13 @@ export default class CrappyLayout extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      width: '100%',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignContent: 'stretch'
+    }
 });
 
 
