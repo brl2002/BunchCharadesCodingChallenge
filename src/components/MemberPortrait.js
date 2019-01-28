@@ -114,7 +114,7 @@ export default class MemberPortrait extends Component {
         });
 
         return (
-            <View key={color} style={[styles.memberContainer, {backgroundColor: color}]}>
+            <View key={color} style={[styles.memberContainer, {backgroundColor: color, width: this.props.width}]}>
                 <Animated.Image style={{...styles.imageStyle, transform:[{scale}, {rotate}]}} source={avatar} resizeMode={'contain'}/>
             </View>
         );
@@ -124,13 +124,12 @@ export default class MemberPortrait extends Component {
 
 const styles = StyleSheet.create({
     memberContainer: {
-        width,
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1
     },
     imageStyle: {
-        flex: 1
+        maxWidth: '80%',
+        maxHeight: '80%'
     }
 });
 

@@ -38,6 +38,7 @@ export default class App extends Component {
   }
 
   onAddMember = () => {
+    LayoutAnimation.spring();
     this.setState(currentState => {
       if (currentState.numMembers >= 4) return currentState
       return {
@@ -47,6 +48,7 @@ export default class App extends Component {
   }
 
   onSubtractMember = () => {
+    LayoutAnimation.spring();
     this.setState(currentState => {
       if (currentState.numMembers <= 1) return currentState
       return {
@@ -118,7 +120,7 @@ export default class App extends Component {
 
         <CountdownBar gameStatus={this.state.gameStatus} onCountdownComplete={this.onCountdownComplete} />
 
-        <CrappyLayout numMembers={this.state.numMembers} danceLevel={this.state.correctStreak} />
+        <HousepartyLayout numMembers={this.state.numMembers} danceLevel={this.state.correctStreak} />
 
         <GameButtons gameStatus={this.state.gameStatus} onSelectPass={this.onSelectPass} onSelectCorrect={this.onSelectCorrect} />
 
