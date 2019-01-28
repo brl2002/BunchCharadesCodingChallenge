@@ -51,7 +51,7 @@ class SingleGif extends Component {
     }
 
     render() {
-        const display = this.props.status !== false ? 'flex' : 'none';
+        const display = this.props.status !== false || this.props.next ? 'flex' : 'none';
 
         const particles =  this.state.particles &&
             <Emitter style={{...StyleSheet.absoluteFill}}
@@ -85,7 +85,8 @@ export default class GifDisplay extends Component {
     renderGifs() {
         return gifs.map((gif, i) => {
             const status = this.props.currentGif == i ? this.props.currentGifStatus : false;
-            return <SingleGif key={i} gif={gif} status={status} onGifResultComplete={this.props.onGifResultComplete}/>
+            const next = this.props.currentGif == i - 1;
+            return <SingleGif key={i} gif={gif} status={status} next={next} onGifResultComplete={this.props.onGifResultComplete}/>
         }).reverse();
     }
 
