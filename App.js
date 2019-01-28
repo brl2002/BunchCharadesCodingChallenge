@@ -82,8 +82,7 @@ export default class App extends Component {
         currentGifStatus: GifStatus.Correct,
         correctStreak: correctStreak
     });
-    console.log(correctStreak);
-      this.music.setMusic(true, correctStreak);
+    this.music.setMusic(true, correctStreak);
   }
 
   onGifResultComplete = () => {
