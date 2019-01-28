@@ -51,7 +51,7 @@ class SingleGif extends Component {
     }
 
     render() {
-        const opacity = this.props.status !== false ? this.state.opacity : 0;
+        const display = this.props.status !== false ? 'flex' : 'none';
 
         const particles =  this.state.particles &&
             <Emitter style={{...StyleSheet.absoluteFill}}
@@ -68,8 +68,8 @@ class SingleGif extends Component {
             </Emitter>;
 
         return (
-            <Animated.View style={{...styles.singleGif, opacity: opacity, transform:[{translateY: this.state.translate}, {scale: this.state.scale}]}}>
-                <Image style={styles.image} source={{uri: this.props.gif.url}} resizeMode={'cover'}/>
+            <Animated.View style={{...styles.singleGif, display, opacity: this.state.opacity, transform:[{translateY: this.state.translate}, {scale: this.state.scale}]}}>
+                <Image style={styles.image} source={this.props.gif.image} resizeMode={'cover'}/>
                 <Animated.View style={{...styles.result, opacity: this.state.resultOpacity}}>
                     {particles}
                     <Text style={styles.text}>{this.props.gif.word}</Text>
@@ -111,7 +111,9 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFill,
     },
     image: {
-        ...StyleSheet.absoluteFill
+        ...StyleSheet.absoluteFill,
+        width: '100%',
+        height: '100%'
     },
     result: {
         ...StyleSheet.absoluteFill,
