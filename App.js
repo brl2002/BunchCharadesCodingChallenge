@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions} from 'react-native';
+import {Platform, StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions, LogBox} from 'react-native';
 
 import CrappyLayout from './src/layouts/CrappyLayout'
 
@@ -43,14 +43,18 @@ export default class App extends Component {
     })
   }
 
+  onStartButtonPressed = () => {
+    console.log("onStartButtonPressed")
+  }
+
   render() {
     console.disableYellowBox = true
     StatusBar.setHidden(true)
     return (
       <View style={styles.container}>
-        <CrappyLayout numMembers={this.state.numMembers} />
+        <HousepartyLayout numMembers={this.state.numMembers} />
 
-        <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.bottomWrapperStyle} activeOpacity={0.7} onPress={this.onStartButtonPressed}>
           <Text style={styles.textStyle}>Start Game</Text>
         </TouchableOpacity>
 
