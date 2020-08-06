@@ -37,9 +37,11 @@ export default class HousepartyLayout extends Component {
 const styles = StyleSheet.create({
   memberContainer: {
     flex: 1,
-    width: '100%',
-    alignItems: 'center',
+    width,
     alignContent: 'stretch',
+    flexDirection: "row",
+    flexWrap: 'wrap',
+    alignItems: 'center',
     justifyContent: 'center',
     resizeMode: 'contain'
   },
