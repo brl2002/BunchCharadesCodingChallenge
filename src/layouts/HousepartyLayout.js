@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, Dimensions, Image } from 'react-native'
+
+import members from '../members'
+
+const { height, width } = Dimensions.get('window')
 
 export default class HousepartyLayout extends Component {
   renderMember = (member) => {
@@ -23,6 +27,7 @@ export default class HousepartyLayout extends Component {
   render() {
     return (
       <View style={styles.container}>
+        {this.renderMembers()}
       </View>
     )
   }
@@ -30,8 +35,16 @@ export default class HousepartyLayout extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
+  memberContainer: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    alignContent: 'stretch',
+    justifyContent: 'center',
+    resizeMode: 'contain'
   },
+  imageStyle: {
+    flex: 1
+  }
 });
 
