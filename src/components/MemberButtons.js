@@ -4,11 +4,32 @@ import {GameStatus} from "../consts";
 
 export default class MemberButtons extends Component {
 
+    constructor(){
+        super();
+        this.state ={
+            isShowing:true
+        }
+    }
+
+    hideMemberButtons(){
+        this.setState({
+            isShowing:false
+        });
+        console.log('hiding MemberButtons');
+    }
+
+    showMemberButtons(){
+        this.setState({
+            isShowing:true
+        });
+        console.log('showing MemberButtons');
+    }
+
     render() {
-        return (
+        return this.state.isShowing ? (
             <View style={[styles.container, this.props.gameStatus == GameStatus.Idle && styles.containerActive]}>
                 <View style={styles.bottomWrapperStyle}>
-                    <TouchableOpacity style={[styles.buttonStyle, {width:150}]} activeOpacity={0.7} onPress={this.props.onStartGame}>
+                    <TouchableOpacity style={[styles.buttonStyle, {width:150}]} activeOpacity={0.7} onPress={()=>{this.props.onStartGame();this.hideMemberButtons();}}>
                         <Text style={styles.textStyle}>Start Game</Text>
                     </TouchableOpacity>
                 </View>
@@ -24,7 +45,7 @@ export default class MemberButtons extends Component {
                     </TouchableOpacity>
                 </View>
             </View>
-        );
+        ) : null;
     }
 
 }
